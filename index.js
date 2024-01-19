@@ -9,10 +9,13 @@ const { Server } = require('socket.io'); // Import 'socket.io'
 const app = express();
 require('dotenv').config();
 app.use(cors());
-
-mongoose.connect('mongodb+srv://rajessh781:R%40jesh2512@personal-blog.dtfxubi.mongodb.net/CodeBlog', {
+mongoose.connect('mongodb+srv://suryasakthi8870:sasuanudogy@cluster0.3dletx8.mongodb.net/Cluster0', {
   useNewUrlParser: true,
 });
+
+// mongoose.connect('mongodb+srv://rajessh781:R%40jesh2512@personal-blog.dtfxubi.mongodb.net/CodeBlog', {
+//   useNewUrlParser: true,
+// });
 
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }));
