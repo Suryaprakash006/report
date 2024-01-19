@@ -9,7 +9,7 @@ const { Server } = require('socket.io'); // Import 'socket.io'
 const app = express();
 require('dotenv').config();
 app.use(cors());
-mongoose.connect('mongodb+srv://suryasakthi8870:sasuanudogy@cluster0.3dletx8.mongodb.net/Cluster0', {
+mongoose.connect('mongodb+srv://suryasakthi8870:sasuanudogy@cluster0.3dletx8.mongodb.net/sensor', {
   useNewUrlParser: true,
 });
 
