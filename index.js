@@ -19,7 +19,7 @@ mongoose.connect('mongodb+srv://suryasakthi8870:sasuanudogy@cluster0.3dletx8.mon
 
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }));
-mongoose.set('strictQuery', true);
+mongoose.set('strictQuery', false);
 
 // Create an HTTP server using Express app
 const server = http.createServer(app);
@@ -30,7 +30,7 @@ const io = new Server(server);
 // Define a Comment model (assuming it's already defined)
 
 // Create or update a comment by ID
-app.post('/Sensor/add/:commentId', async (req, res) => {
+app.patch('/Sensor/add/:commentId', async (req, res) => {
   const { data } = req.body;
   const commentId = req.params.commentId;
 
@@ -56,7 +56,21 @@ app.post('/Sensor/add/:commentId', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+app.post('/Sensor/add', async (req, res) => {
+  const { data } = req.body;
 
+  try {
+    // Create a new comment
+    const newComment = new Comment({ data });
+    await newComment.save();
+    res.send('Comment Created');
+
+    // Emit an event to notify clients about the new comment
+    io.emit('commentUpdate', { commentId: newComment._id, data });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 // Get all comments
 app.get('/Sensor', async (req, res) => {
   try {

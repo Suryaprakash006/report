@@ -15,7 +15,11 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^6.9.2",
+<<<<<<< HEAD
+    "mongoose-auto-increment": "^5.0.1",
+=======
    
+>>>>>>> 1202bcd1b918864d42ea6c97448e709c2f0c899f
     "socket.io": "^4.7.2",
     "swagger-ui-express": "^4.6.1"
   }
